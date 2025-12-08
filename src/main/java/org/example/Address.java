@@ -29,4 +29,20 @@ public class Address {
         }
         return true;
     }
+
+    public Address(int streetNo, String street, String city, Province province, String postalCode, boolean validate) {
+        if (validate && !isPostalCodeValid(postalCode)) {
+            this.streetNo = 0;
+            this.street = null;
+            this.city = null;
+            this.province = null;
+            this.postalCode = null;
+        } else {
+            this.streetNo = streetNo;
+            this.street = street;
+            this.city = city;
+            this.province = province;
+            this.postalCode = postalCode != null ? postalCode.toUpperCase() : null;
+        }
+    }
 }
