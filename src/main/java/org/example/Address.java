@@ -1,17 +1,21 @@
 package org.example;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Address {
 
-    private int streetNo;
-    private String street;
-    private String city;
-    private Province province;
-    private String postalCode;
+    @Getter @Setter private int streetNo;
+    @Getter @Setter private String street;
+    @Getter @Setter private String city;
+    @Getter @Setter private Province province;
+    @Setter private String postalCode;
 
     public enum Province {
         AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
