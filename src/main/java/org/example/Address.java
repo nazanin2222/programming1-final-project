@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Address {
-
     @Getter @Setter private int streetNo;
     @Getter @Setter private String street;
     @Getter @Setter private String city;
@@ -21,6 +20,11 @@ public class Address {
         AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
     }
 
+    /**
+     * checks if postal code is valid
+     * @param postalCode the postal code to validate
+     * @return true if valid, false if not
+     */
     public static boolean isPostalCodeValid(String postalCode) {
         if (postalCode == null || postalCode.length() != 6) return false;
         for (int i = 0; i < 6; i++) {
