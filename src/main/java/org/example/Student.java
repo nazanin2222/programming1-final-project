@@ -51,4 +51,38 @@ public class Student {
 
         return true;
     }
+
+    /**
+     * drops a course for the student
+     * @param course the course to drop
+     * @return true if dropping is successful, false if not registered
+     */
+    public boolean dropCourse(Course course) {
+        if (!registeredCourses.contains(course)) return false;
+
+        registeredCourses.remove(course);
+        course.getRegisteredStudents().remove(this);
+
+        return true;
+    }
+
+    public String toSimplifiedString() {
+        return studentId + " - " + studentName + " - " +
+                (department != null ? department.getDepartmentName() : "No Department");
+    }
+
+    public String toString() {
+        String str = "Student ID: " + studentId + "\n" +
+                "Name: " + studentName + "\n" +
+                "Gender: " + gender + "\n" +
+                "Address: " + address + "\n" +
+                "Department: " + department + "\n" +
+                "Registered Courses:\n";
+
+        for (Course c : registeredCourses) {
+            str += "   - " + c.toSimplifiedString() + "\n";
+        }
+
+        return str;
+    }
 }
