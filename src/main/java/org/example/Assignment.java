@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Assignment {
     private final String assignmentId;
@@ -22,14 +23,17 @@ public class Assignment {
      * @return the average score as a double
      */
     public double calcAssignmentAvg() {
-        int sum = 0;
-        int count = 0;
-        for (Integer s : scores) {
-            if (s != null) {
-                sum += s;
-                count++;
-            }
+        if (scores.size() == 0) return 0;
+
+        double sum = 0;
+        for (int score : scores) {
+            sum += score;
         }
-        return count == 0 ? 0 : (double) sum / count;
+        return sum / scores.size();
+    }
+
+    public void generateRandomScore(int studentCount) {
+        Random rand = new Random();
+
     }
 }
