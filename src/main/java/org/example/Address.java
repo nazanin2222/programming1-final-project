@@ -7,10 +7,10 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 public class Address {
-    @Getter @Setter private int streetNo;
-    @Getter @Setter private String street;
-    @Getter @Setter private String city;
-    @Getter @Setter private Province province;
+    private int streetNo;
+    private String street;
+    private String city;
+    private Province province;
     private String postalCode;
 
     public enum Province {
