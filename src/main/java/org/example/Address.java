@@ -1,20 +1,18 @@
 package org.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode
 public class Address {
     @Getter @Setter private int streetNo;
     @Getter @Setter private String street;
     @Getter @Setter private String city;
     @Getter @Setter private Province province;
-    @Setter private String postalCode;
+    private String postalCode;
 
     public enum Province {
         AB, BC, MB, NB, NL, NS, NT, NU, ON, PE, QC, SK, YT
@@ -38,19 +36,25 @@ public class Address {
         return true;
     }
 
-    public Address(int streetNo, String street, String city, Province province, String postalCode, boolean validate) {
-        if (validate && !isPostalCodeValid(postalCode)) {
+    public Address(int streetNo, String street, String city, Province province, String postalCode) {
+        if (isPostalCodeValid(postalCode)) {
+            this.streetNo = streetNo;
+            this.street = street;
+            this.city = city;
+            this.province = province;
+            this.postalCode = postalCode.toUpperCase();
+        } else {
             this.streetNo = 0;
             this.street = null;
             this.city = null;
             this.province = null;
             this.postalCode = null;
-        } else {
-            this.streetNo = streetNo;
-            this.street = street;
-            this.city = city;
-            this.province = province;
-            this.postalCode = postalCode != null ? postalCode.toUpperCase() : null;
+        }
+    }
+
+    public void setPostalCode(String postalCode) {
+        if (isPostalCodeValid(postalCode)) {
+            this.postalCode = postalCode.toUpperCase();
         }
     }
 }
