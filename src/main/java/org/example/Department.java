@@ -11,7 +11,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Department {
     private String departmentId;
-    @Setter private String departmentName;
+    private String departmentName;
     private static int nextId = 1;
 
     public Department(String departmentName) {
@@ -32,7 +32,7 @@ public class Department {
     public static boolean isDepartmentNameValid(String name) {
         if (name == null || name.isEmpty()) return false;
 
-        for (int i = 0; i <= name.length(); i++) {
+        for (int i = 0; i < name.length(); i++) {
             char c = name.charAt(i);
             if (!Character.isLetter(c) && c != ' ') {
                 return false;
