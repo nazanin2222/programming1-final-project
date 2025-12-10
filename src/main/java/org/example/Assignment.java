@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Getter
 public class Assignment {
     private final String assignmentId;
     private String assignmentName;

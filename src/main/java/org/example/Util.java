@@ -4,18 +4,25 @@ public class Util {
     public static String toTitleCase(String str) {
         if (str == null || str.isEmpty()) return str;
 
-        String[] words = str.toLowerCase().split(" ");
-        StringBuilder sb = new StringBuilder();
+        String result = "";
+        boolean newWord = true;
 
-        for (String w : words) {
-            if (w.isEmpty()) continue;
-            sb.append(Character.toUpperCase(w.charAt(0)));
-            if (w.length() > 1) {
-                sb.append(w.substring(1));
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+
+            if (c == ' ') {
+                result += c;
+                newWord = true;
+            } else {
+                if (newWord) {
+                    result += Character.toUpperCase(c);
+                    newWord = false;
+                } else {
+                    result += Character.toLowerCase(c);
+                }
             }
-            sb.append(" ");
         }
 
-        return sb.toString().trim();
+        return result;
     }
 }

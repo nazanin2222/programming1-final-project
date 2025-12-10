@@ -26,4 +26,5 @@ public class Course {
         this.courseId = String.format("C-%s-%02d",
                 department != null ? department.getDepartmentId() : "D00", nextId++);
     }
+
 }
