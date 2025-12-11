@@ -2,6 +2,7 @@ package org.example;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Random;
 
 @Setter
 @Getter
+@ToString
 public class Assignment {
     private final String assignmentId;
     private String assignmentName;
@@ -60,10 +62,5 @@ public class Assignment {
                 score = 90 + rand.nextInt(11);
             scores.set(i, score);
         }
-    }
-
-    @Override
-    public String toString() {
-        return assignmentId + " - " + assignmentName + " - Weight: " + weight;
     }
 }

@@ -31,11 +31,8 @@ public class Department {
     public static boolean isDepartmentNameValid(String name) {
         if (name == null || name.isEmpty()) return false;
 
-        for (int i = 0; i < name.length(); i++) {
-            char c = name.charAt(i);
-            if (!Character.isLetter(c) && c != ' ') {
-                return false;
-            }
+        for (char c : name.toCharArray()) {
+            if (!Character.isLetter(c) && c != ' ') return false;
         }
         return true;
     }

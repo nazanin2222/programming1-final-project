@@ -1,12 +1,15 @@
 package org.example;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
+@EqualsAndHashCode
 public class Student {
     private final String studentId;
     private String studentName;
@@ -22,16 +25,12 @@ public class Student {
     }
 
     public Student(String studentName, Gender gender, Address address, Department department) {
-        this.studentId = String.format("S%05d", nextId++);
+        this.studentId = String.format("S%06d", nextId++);
         this.studentName = Util.toTitleCase(studentName);
         this.gender = gender;
         this.address = address;
         this.department = department;
         this.registeredCourses = new ArrayList<>();
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = Util.toTitleCase(studentName);
     }
 
     /**
@@ -40,7 +39,9 @@ public class Student {
      * @return true if the registration is successful, false if already registered
      */
     public boolean registerCourse(Course course) {
-        if (registeredCourses.contains(course)) return false;
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
 
         registeredCourses.add(course);
         course.getRegisteredStudents().add(this);
@@ -58,7 +59,9 @@ public class Student {
      * @return true if dropping is successful, false if not registered
      */
     public boolean dropCourse(Course course) {
-        if (!registeredCourses.contains(course)) return false;
+        if (!registeredCourses.contains(course)) {
+            return false;
+        }
 
         registeredCourses.remove(course);
         course.getRegisteredStudents().remove(this);
