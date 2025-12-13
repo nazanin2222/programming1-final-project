@@ -33,3 +33,4 @@ Also demonstrates OOP concepts including classes, enums, encapsulation, construc
 
 ## Class Diagram
 The class diagram illustrating relationships between all classes is included in the repository under:  
+https://github.com/nazanin2222/programming1-final-project/blob/main/docs/UML.jpg
